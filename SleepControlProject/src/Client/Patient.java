@@ -93,6 +93,12 @@ public class Patient {
         this.gender = gender;
     }
 
+    public void viewEEG(){
+        
+            
+    }
+    
+    
     @Override
     public String toString() {
         return "Patient{" + "name=" + name + ", lastname=" + lastname + ", telephone=" + telephone + ", address=" + address + ", dateOfBirth=" + dateOfBirth + ", dni=" + dni + ", gender=" + gender + '}';
@@ -124,10 +130,6 @@ public class Patient {
     }
 
     
-        
     
-    
-    
-    
-    
+       
 }
