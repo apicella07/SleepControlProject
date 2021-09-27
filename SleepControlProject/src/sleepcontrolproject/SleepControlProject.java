@@ -17,7 +17,7 @@ public class SleepControlProject {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        int age;
+        
         
      
         
