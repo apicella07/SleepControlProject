@@ -7,12 +7,17 @@ package Client;
 
 import java.util.Date;
 import java.util.Objects;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  *
  * @author gabri
  */
 public class Patient {
+    
+    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     
     private  String name;
     private String lastname;
@@ -36,7 +41,43 @@ public class Patient {
         this.dni = dni;
         this.gender = gender;
     }
-
+    
+    
+  public void modifyInformation() throws IOException{
+        int option=0;
+        Boolean correctOption = false;
+        do{
+            System.out.println("What do you want to modify 1 or 2?:\n1.Telephone.\n2.Address.");
+        
+        try{
+            option = Integer.parseInt(reader.readLine());
+            correctOption = true;
+          
+        }catch(NumberFormatException e){
+            System.out.println("Insert an integer please: ");
+        }
+        }
+        while(correctOption == false);
+        
+        switch(option){
+            case 1: 
+                System.out.println("Write your new telephone: ");
+                String tele = reader.readLine();
+                setTelephone(tele);
+                System.out.println("Your new telephone is: ");
+                this.telephone=getTelephone();   
+                
+               case 2: 
+                System.out.println("Write your new address: ");
+                String addr = reader.readLine();
+                 setAddress(addr);
+                 System.out.println("Your new address is: ");
+                this.address=getAddress();  
+                
+        }
+    }
+  
+  
     public String getName() {
         return name;
     }
@@ -94,9 +135,10 @@ public class Patient {
     }
 
     public void viewEEG(){
-        
-            
+          
     }
+    
+  
     
     
     @Override
