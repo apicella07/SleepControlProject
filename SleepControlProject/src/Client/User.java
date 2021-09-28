@@ -10,10 +10,12 @@ import java.util.Objects;
  *
  * @author gabri
  */
-public class User implements Serializable{ 
+public class User implements Serializable { 
     
     private String username;
     private byte[] password;
+    
+    private static final long serialVersionUID = -1;
     
     public User(){
         super();
