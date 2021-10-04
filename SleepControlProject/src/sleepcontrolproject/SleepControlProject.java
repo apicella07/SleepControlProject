@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package sleepcontrolproject;
+import Client.*;
 
 /**
  *
@@ -16,9 +17,7 @@ public class SleepControlProject {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        
-        
+
      
         
     }

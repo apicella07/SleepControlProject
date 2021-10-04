@@ -10,6 +10,9 @@ import java.util.Objects;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 /**
  *
@@ -76,6 +79,50 @@ public class Patient {
                 
         }
     }
+  
+    public static Report todaysReport(){
+        Report newreport=null;
+        try{
+            
+         System.out.println("Today's Report: \n");
+        System.out.println("1.Have you slept well during the night? Yes or no");
+        String question1 = reader.readLine();
+        System.out.println("2.Do you feel exhausted like you didn’t sleep through the night? yes or no");
+        String question2 = reader.readLine();
+        System.out.println("3. What is the average of hours you sleep daily? ");
+        String question3 = reader.readLine();
+        System.out.println("4.Did you stir a lot during the night?");
+        String question4 = reader.readLine();
+        System.out.println("5. How long until you fall asleep? Does it take too long or a few minutes?");
+        String question5 = reader.readLine();
+        System.out.println("6. Have you rested? Yes or no");
+        String question6 = reader.readLine();
+        System.out.println("7. Are you able to stay awake during the day? yes or no");
+        String question7 = reader.readLine();
+        System.out.println("8. How many times did you wake up during the night?");
+        String question8 = reader.readLine();
+        System.out.println("9. Do you remember the dream? yes or no");
+        String question9 = reader.readLine();
+        System.out.println("10. Do you feel nervous or have any worries? yes or no");
+        String question10 = reader.readLine();
+        System.out.println("11. How do you feel today? Symptons?");
+        String question11 = reader.readLine();
+        
+        System.out.println("Report completed!");
+        
+        Date today = Calendar.getInstance().getTime();
+       // SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy"); // ver si podemos al cambiarlo a Date sirve 
+        //String date = sdf.format(new Date()); 
+         newreport = new Report(today, question1, question2,question3, question4, question5, question6, question7, question8, question9, question10, question11);
+        System.out.println("Your report has been saved correctly");
+         
+    }catch(Exception e){
+            e.printStackTrace();
+            }
+    return newreport;
+    }
+    
+    
   
   
     public String getName() {
@@ -171,7 +218,16 @@ public class Patient {
         return true;
     }
 
+public static  void main(String[] args){
+        Report report = todaysReport();
+        //report = ;
+        System.out.println(report);
+        
+        System.out.println(report.getTodaysDate());
+    
+}
+}
     
     
        
-}
+

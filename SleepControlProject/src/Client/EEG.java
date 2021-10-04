@@ -11,5 +11,7 @@ package Client;
  */
 public class EEG {
      
+    //esto es donde el bitalino va a guardar los resulrados 
     // En el report poner como id la fecha y así la persona puede decidir que hemograma ver y coger el que quiere 
+    
 }
