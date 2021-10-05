@@ -30,9 +30,6 @@ public class Patient {
     private String dni; 
     private String gender; 
     
-    public Patient (){
-        super();
-    }
     
     public Patient(String name, String lastname, String telephone, String address, Date dateOfBirth, String dni, String gender ){
         super();
@@ -84,7 +81,7 @@ public class Patient {
         Report newreport=null;
         try{
             
-         System.out.println("Today's Report: \n");
+        System.out.println("Today's Report: \n");
         System.out.println("1.Have you slept well during the night? Yes or no");
         String question1 = reader.readLine();
         System.out.println("2.Do you feel exhausted like you didn’t sleep through the night? yes or no");

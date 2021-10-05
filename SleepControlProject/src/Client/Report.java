@@ -25,9 +25,6 @@ public class Report {
     private String question10; //Do you feel nervous or have any worries? yes or no
     private String question11; //How do you feel today? Symptons?
 
-    public Report(){
-        super();
-    }
     
     public Report(Date todaysDate,String question1, String question2,String question3,String question4,String question5,String question6,String question7, String question8, String question9, String question10, String question11){
        this.todaysDate = todaysDate;
