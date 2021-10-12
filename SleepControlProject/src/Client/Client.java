@@ -12,10 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author mariaceleste
- */
+
 public class Client extends Application {
     
     @Override
@@ -25,7 +22,7 @@ public class Client extends Application {
         
         Scene scene = new Scene(root);
         
-        primaryStage.setTitle("DISLEEP APP ");
+        primaryStage.setTitle("SLEEP CONTROL");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

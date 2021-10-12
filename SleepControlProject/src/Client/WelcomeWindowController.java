@@ -40,16 +40,16 @@ public class WelcomeWindowController extends User {
     
     
     @FXML void actionSave (ActionEvent evento) throws ParseException {
-        Patient.name=Name.getText();
-        Patient.lastname=Lastname.getText();
-        Patient.dni=DNI.getText();
-        Patient.telephone=Telephone.getText();
-        Patient.address=Address.getText();
-        Patient.gender=Gender.getValue().toString();
-        String datestring=Dob.getValue().toString(); //Hay que elegir que lo hagan en un formato concreto (dd/mm/yyy)
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        Patient.dateOfBirth= format.parse(datestring);
-        User.username=DNI.getText();
+        //Patient.name=Name.getText();
+        //Patient.lastname=Lastname.getText();
+        //Patient.dni=DNI.getText();
+      //  Patient.telephone=Telephone.getText();
+        //Patient.address=Address.getText();
+    //    Patient.gender=Gender.getValue().toString();
+      //  String datestring=Dob.getValue().toString(); //Hay que elegir que lo hagan en un formato concreto (dd/mm/yyy)
+        //SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+    //    Patient.dateOfBirth= format.parse(datestring);
+     //   User.username=DNI.getText();
         //La contraseña no se
        
     }
@@ -63,6 +63,10 @@ public class WelcomeWindowController extends User {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
     
     
 }
