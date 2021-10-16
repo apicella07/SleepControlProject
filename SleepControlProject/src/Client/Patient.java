@@ -22,7 +22,7 @@ public class Patient {
     
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     
-    private  String name;
+    private String name;
     private String lastname;
     private String telephone;
     private String address;
