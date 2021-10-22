@@ -26,7 +26,7 @@ public class Report {
     private String todaysMood; //How do you feel today? Symptons?
 
     
-    public Report(Date todaysDate,String sleepQuality, String exhaustion,String averageHour,String movement,String timeToFallAsleep,String rest,String stayAwake, String timesAwake, String dreams, String worries, String todaysMood){
+    public Report(Date todaysDate,String sleepQuality, String exhaustion,String averageHours,String movement,String timeToFallAsleep,String rest,String stayAwake, String timesAwake, String dreams, String worries, String todaysMood){
        this.todaysDate = todaysDate;
         this.sleepQuality= sleepQuality;
         this.exhaustion= exhaustion;
