@@ -13,32 +13,34 @@ import java.util.*;
 public class Report {
     
     private Date todaysDate;
-    private String question1; //Have you slept well during the night? yes or no
-    private String question2; //Do you feel exhausted like you didn’t sleep through the night? yes or no
-    private String question3; //What is the average of hours you sleep daily? 
-    private String question4; //Did you stir a lot during the night?
-    private String question5; // How long until you fall asleep? Does it take too long or a few minutes?
-    private String question6; //Have you rested? yes o no
-    private String question7; //Are you able to stay awake during the day? yes or no
-    private String question8; //How many times did you wake up during the night?
-    private String question9; //Do you remember the dream? yes or no
-    private String question10; //Do you feel nervous or have any worries? yes or no
-    private String question11; //How do you feel today? Symptons?
+    private String sleepQuality; //Have you slept well during the night? yes or no
+    private String exhaustion; //Do you feel exhausted like you didn’t sleep through the night? yes or no
+    private String averageHours; //What is the average of hours you sleep daily? 
+    private String movement; //Did you stir a lot during the night?
+    private String timeToFallAsleep; // How long until you fall asleep? Does it take too long or a few minutes?
+    private String rest; //Have you rested? yes o no
+    private String stayAwake; //Are you able to stay awake during the day? yes or no
+    private String timesAwake; //How many times did you wake up during the night?
+    private String dreams; //Do you remember the dream? yes or no
+    private String worries; //Do you feel nervous or have any worries? yes or no
+    private String todaysMood; //How do you feel today? Symptons?
+    private String doubtsForDoctor;
 
     
-    public Report(Date todaysDate,String question1, String question2,String question3,String question4,String question5,String question6,String question7, String question8, String question9, String question10, String question11){
+    public Report(Date todaysDate,String sleepQuality, String exhaustion,String averageHours,String movement,String timeToFallAsleep,String rest,String stayAwake, String timesAwake, String dreams, String worries, String todaysMood, String doubtsForDoctor){
        this.todaysDate = todaysDate;
-        this.question1= question1;
-        this.question2= question2;
-        this.question3= question3;
-        this.question4= question4;
-        this.question5= question5;
-        this.question6= question6;
-        this.question7= question7;
-        this.question8= question8;
-        this.question9= question9;
-        this.question10= question10;
-        this.question11= question11;
+        this.sleepQuality= sleepQuality;
+        this.exhaustion= exhaustion;
+        this.averageHours= averageHours;
+        this.movement= movement;
+        this.timeToFallAsleep= timeToFallAsleep;
+        this.rest= rest;
+        this.stayAwake= stayAwake;
+        this.timesAwake= timesAwake;
+        this.dreams= dreams;
+        this.worries= worries;
+        this.todaysMood= todaysMood;
+        this.doubtsForDoctor=doubtsForDoctor;
     }   
         
         
@@ -50,92 +52,100 @@ public class Report {
         this.todaysDate = todaysDate;
     }
 
-    public String getQuestion1() {
-        return question1;
+    public String getsleepQuality() {
+        return sleepQuality;
     }
 
-    public void setQuestion1(String question1) {
-        this.question1 = question1;
+    public void setsleepQuality(String sleepQuality) {
+        this.sleepQuality = sleepQuality;
     }
 
-    public String getQuestion2() {
-        return question2;
+    public String getExhaustion() {
+        return exhaustion;
     }
 
-    public void setQuestion2(String question2) {
-        this.question2 = question2;
+    public void setExhaustion(String exhaustion) {
+        this.exhaustion = exhaustion;
     }
 
-    public String getQuestion3() {
-        return question3;
+    public String getAverageHours() {
+        return averageHours;
     }
 
-    public void setQuestion3(String question3) {
-        this.question3 = question3;
+    public void setAverageHours(String averageHours) {
+        this.averageHours = averageHours;
     }
 
-    public String getQuestion4() {
-        return question4;
+    public String getMovement() {
+        return movement;
     }
 
-    public void setQuestion4(String question4) {
-        this.question4 = question4;
+    public void setMovement(String movement) {
+        this.movement = movement;
     }
 
-    public String getQuestion5() {
-        return question5;
+    public String gettimeToFallAsleep() {
+        return timeToFallAsleep;
     }
 
-    public void setQuestion5(String question5) {
-        this.question5 = question5;
+    public void settimeToFallAsleep(String timeToFallAsleep) {
+        this.timeToFallAsleep = timeToFallAsleep;
     }
 
-    public String getQuestion6() {
-        return question6;
+    public String getRest() {
+        return rest;
     }
 
-    public void setQuestion6(String question6) {
-        this.question6 = question6;
+    public void setRest(String rest) {
+        this.rest = rest;
     }
 
-    public String getQuestion7() {
-        return question7;
+    public String getStayAwake() {
+        return stayAwake;
     }
 
-    public void setQuestion7(String question7) {
-        this.question7 = question7;
+    public void setStayAwake(String stayAwake) {
+        this.stayAwake = stayAwake;
     }
 
-    public String getQuestion8() {
-        return question8;
+    public String getTimesAwake() {
+        return timesAwake;
     }
 
-    public void setQuestion8(String question8) {
-        this.question8 = question8;
+    public void setTimesAwake(String timesAwake) {
+        this.timesAwake = timesAwake;
     }
 
-    public String getQuestion9() {
-        return question9;
+    public String getDreams() {
+        return dreams;
     }
 
-    public void setQuestion9(String question9) {
-        this.question9 = question9;
+    public void setDreams(String dreams) {
+        this.dreams = dreams;
     }
 
-    public String getQuestion10() {
-        return question10;
+    public String getWorries() {
+        return worries;
     }
 
-    public void setQuestion10(String question10) {
-        this.question10 = question10;
+    public void setWorries(String worries) {
+        this.worries = worries;
     }
 
-    public String getQuestion11() {
-        return question11;
+    public String getTodaysMood() {
+        return todaysMood;
     }
 
-    public void setQuestion11(String question11) {
-        this.question11 = question11;
+    public void setTodaysMood(String todaysMood) {
+        this.todaysMood = todaysMood;
+    }
+    
+    public String getdoubtsForDoctor(){
+        return doubtsForDoctor;
+    }
+    
+    public void setdoubtsForDoctor(String doubtsForDoctor){
+        this.doubtsForDoctor = doubtsForDoctor;
     }
 
     @Override
@@ -165,7 +175,7 @@ public class Report {
 
     @Override
     public String toString() {
-        return "Report{" + "todaysDate=" + todaysDate + ", question1=" + question1 + ", question2=" + question2 + ", question3=" + question3 + ", question4=" + question4 + ", question5=" + question5 + ", question6=" + question6 + ", question7=" + question7 + ", question8=" + question8 + ", question9=" + question9 + ", question10=" + question10 + ", question11=" + question11 + '}';
+        return "Report{" + "todaysDate=" + todaysDate + ", Sleep Quality=" + sleepQuality + ", Exhaustion=" + exhaustion + ", Average Hours=" + averageHours + ", Movement=" + movement + ", Time to fall Asleep=" + timeToFallAsleep + ", Rest=" + rest + ", Stay Awake=" + stayAwake + ", Times Awake=" + timesAwake + ", Dreams=" + dreams + ", Worries=" + worries + ", Todays Mood=" + todaysMood + ", Doubts for the Doctor=" + doubtsForDoctor +'}';
     }
      
    
