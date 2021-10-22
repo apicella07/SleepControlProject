@@ -50,21 +50,22 @@ public class ModifyInfoController extends User {
     
 
     
-
+String name1,lastname1,dni1,telephone1,address1,gender1,username1;
+Date date1;
     
     @FXML void actionSave (ActionEvent evento) throws ParseException {
-        Patient.name=Name.getText();
-        Patient.lastname=Lastname.getText();
-        Patient.dni=DNI.getText();
-        Patient.telephone=Telephone.getText();
-        Patient.address=Address.getText();
-        Patient.gender=Gender.getValue().toString();
+        name1=Name.getText();
+        lastname1=Lastname.getText();
+        dni1=DNI.getText();
+        telephone1=Telephone.getText();
+        address1=Address.getText();
+        gender1=Gender.getValue().toString();
         String datestring=DOB.getValue().toString(); //Hay que elegir que lo hagan en un formato concreto (dd/mm/yyy)
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        Patient.dateOfBirth= format.parse(datestring);
-        User.username=DNI.getText();
+        date1= format.parse(datestring);
+        username1=DNI.getText();
         //La contraseña no se
-       
+       Patient patient1 = new Patient(name1,lastname1,telephone1,address1,date1,dni1,gender1);
     }
     public void start(Stage primaryStage) throws Exception {
 
