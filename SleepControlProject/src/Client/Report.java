@@ -24,9 +24,10 @@ public class Report {
     private String dreams; //Do you remember the dream? yes or no
     private String worries; //Do you feel nervous or have any worries? yes or no
     private String todaysMood; //How do you feel today? Symptons?
+    private String doubtsForDoctor;
 
     
-    public Report(Date todaysDate,String sleepQuality, String exhaustion,String averageHours,String movement,String timeToFallAsleep,String rest,String stayAwake, String timesAwake, String dreams, String worries, String todaysMood){
+    public Report(Date todaysDate,String sleepQuality, String exhaustion,String averageHours,String movement,String timeToFallAsleep,String rest,String stayAwake, String timesAwake, String dreams, String worries, String todaysMood, String doubtsForDoctor){
        this.todaysDate = todaysDate;
         this.sleepQuality= sleepQuality;
         this.exhaustion= exhaustion;
@@ -39,6 +40,7 @@ public class Report {
         this.dreams= dreams;
         this.worries= worries;
         this.todaysMood= todaysMood;
+        this.doubtsForDoctor=doubtsForDoctor;
     }   
         
         
@@ -137,6 +139,14 @@ public class Report {
     public void setTodaysMood(String todaysMood) {
         this.todaysMood = todaysMood;
     }
+    
+    public String getdoubtsForDoctor(){
+        return doubtsForDoctor;
+    }
+    
+    public void setdoubtsForDoctor(String doubtsForDoctor){
+        this.doubtsForDoctor = doubtsForDoctor;
+    }
 
     @Override
     public int hashCode() {
@@ -165,7 +175,7 @@ public class Report {
 
     @Override
     public String toString() {
-        return "Report{" + "todaysDate=" + todaysDate + ", Sleep Quality=" + sleepQuality + ", Exhaustion=" + exhaustion + ", Average Hours=" + averageHours + ", Movement=" + movement + ", Time to fall Asleep=" + timeToFallAsleep + ", Rest=" + rest + ", Stay Awake=" + stayAwake + ", Times Awake=" + timesAwake + ", Dreams=" + dreams + ", Worries=" + worries + ", Todays Mood=" + todaysMood + '}';
+        return "Report{" + "todaysDate=" + todaysDate + ", Sleep Quality=" + sleepQuality + ", Exhaustion=" + exhaustion + ", Average Hours=" + averageHours + ", Movement=" + movement + ", Time to fall Asleep=" + timeToFallAsleep + ", Rest=" + rest + ", Stay Awake=" + stayAwake + ", Times Awake=" + timesAwake + ", Dreams=" + dreams + ", Worries=" + worries + ", Todays Mood=" + todaysMood + ", Doubts for the Doctor=" + doubtsForDoctor +'}';
     }
      
    

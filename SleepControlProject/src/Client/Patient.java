@@ -83,34 +83,36 @@ public class Patient {
             
         System.out.println("Today's Report: \n");
         System.out.println("1.Have you slept well during the night? Yes or no");
-        String question1 = reader.readLine();
+        String sleepQuality = reader.readLine();
         System.out.println("2.Do you feel exhausted like you didn’t sleep through the night? yes or no");
-        String question2 = reader.readLine();
+        String exhaustion = reader.readLine();
         System.out.println("3. What is the average of hours you sleep daily? ");
-        String question3 = reader.readLine();
+        String averageHours = reader.readLine();
         System.out.println("4.Did you stir a lot during the night?");
-        String question4 = reader.readLine();
+        String movement = reader.readLine();
         System.out.println("5. How long until you fall asleep? Does it take too long or a few minutes?");
-        String question5 = reader.readLine();
+        String timeToFallAsleep = reader.readLine();
         System.out.println("6. Have you rested? Yes or no");
-        String question6 = reader.readLine();
+        String rest = reader.readLine();
         System.out.println("7. Are you able to stay awake during the day? yes or no");
-        String question7 = reader.readLine();
+        String stayAwake = reader.readLine();
         System.out.println("8. How many times did you wake up during the night?");
-        String question8 = reader.readLine();
+        String timesAwake = reader.readLine();
         System.out.println("9. Do you remember the dream? yes or no");
-        String question9 = reader.readLine();
+        String dreams = reader.readLine();
         System.out.println("10. Do you feel nervous or have any worries? yes or no");
-        String question10 = reader.readLine();
+        String worries = reader.readLine();
         System.out.println("11. How do you feel today? Symptons?");
-        String question11 = reader.readLine();
+        String todaysMood = reader.readLine();
+        System.out.println("Do you have any doubts for the Doctor?");
+        String doubtsForTheDoctor = reader.readLine();
         
         System.out.println("Report completed!");
         
         Date today = Calendar.getInstance().getTime();
        // SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy"); // ver si podemos al cambiarlo a Date sirve 
         //String date = sdf.format(new Date()); 
-         newreport = new Report(today, question1, question2,question3, question4, question5, question6, question7, question8, question9, question10, question11);
+         newreport = new Report(today, sleepQuality, exhaustion,averageHours, movement, timeToFallAsleep, rest, stayAwake, timesAwake, dreams, worries, todaysMood, doubtsForTheDoctor);
         System.out.println("Your report has been saved correctly");
          
     }catch(Exception e){
