@@ -62,6 +62,11 @@ public class PatientDailyReportController extends User{
     
     @FXML void saveReport (ActionEvent evento) throws ParseException {
         
+        date = new Date();
+        
+        // new label for date
+        // Casting de date a String
+        // dateLabel.setText("STRING QUE TENGO EN LA VARIABLE ANTERIOR");
         sleepQuality=answer1.getText();
         exhaustion=answer2.getText();
         averageHours=answer3.getText();
@@ -74,6 +79,7 @@ public class PatientDailyReportController extends User{
         worries=answer10.getText();
         todaysMood=answer11.getText();
         doubtsForDoctor=doughts.getText();
+        
         
         Report report1 = new Report (date,sleepQuality, exhaustion, averageHours, movement, timeToFallAsleep, rest, stayAwake, timesAwake, dreams, worries, todaysMood, doubtsForDoctor);
         

@@ -34,14 +34,18 @@ public class LoginController implements Initializable {
     @FXML
     private TextField password;
     
-    /* ESTO NO PODEMOS AÚN PORQUE NECESITAMOS TENER LA LISTA DE USERS PARA PODER MIRAR SI ES CORRECTO O NO EL USER, ES DECIR, NO FUNCIONA EL CHECKUSER
     public void next(ActionEvent event) throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
         String passIntroduced = password.getText();
         User us = new User(userName.getText(), passIntroduced);
         
+        
+        //ESTE IF GENERARLO CUANDO TENGAMOS LA BASE DE DATOS
+        //POR AHORA TODOS LOS USERS Y PASSWORDS SEAN TRUE, ESTEN BIEN DE POR SI
+        /*
         if (!checkUser(us, passIntroduced)) {
             error.setText("Wrong user or password");
         } else {
+*/
             System.out.println("Hello" + userName);
 
             FXMLLoader loader = new FXMLLoader();
@@ -57,9 +61,8 @@ public class LoginController implements Initializable {
 
             window.setScene(scene);
             window.show();
-        }
+      //  }
     }
-    */
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

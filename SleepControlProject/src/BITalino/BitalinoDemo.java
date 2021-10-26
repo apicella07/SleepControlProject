@@ -33,7 +33,7 @@ public class BitalinoDemo {
 
             // Start acquisition on analog channels A2 and A6
             // For example, If you want A1, A3 and A4 you should use {0,2,3}
-            int[] channelsToAcquire = {1, 5};
+            int[] channelsToAcquire = {1, 5}; //CAMBIOS AQUI!!! PARA EL EEG
             bitalino.start(channelsToAcquire);
 
             //Read in total 10000000 times
