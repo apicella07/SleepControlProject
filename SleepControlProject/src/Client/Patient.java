@@ -22,6 +22,7 @@ public class Patient {
     
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     
+    private Integer id; 
     private String name;
     private String lastname;
     private String telephone;
@@ -30,8 +31,23 @@ public class Patient {
     private String dni; 
     private String gender; 
     
-    
-    public Patient(String name, String lastname, String telephone, String address, Date dateOfBirth, String dni, String gender ){
+    public Patient(Integer id) {
+		super();
+		this.id = id;
+	}
+
+
+	public Patient(Integer id, String name, String lastname, String telephone, String addres, Date dob, String dni, String gender) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.lastname = lastname;
+		this.telephone = telephone;
+		this.dateOfBirth=dob;
+		this.gender = gender;
+		this.address = addres;
+	}
+    public Patient(String name, String lastname, String telephone, String address, Date dateOfBirth, String dni, String gender){
         super();
         this.name = name;
         this.lastname = lastname;
@@ -40,6 +56,20 @@ public class Patient {
         this.dateOfBirth = dateOfBirth;
         this.dni = dni;
         this.gender = gender;
+    }
+    
+    public Patient(Integer id,String name, String lastname, String telephone){
+        super();
+        this.id=id;
+        this.name = name;
+        this.lastname = lastname;
+        this.telephone = telephone;
+    }
+    public Patient(String name, String lastname, String telephone){
+        super();
+        this.name = name;
+        this.lastname = lastname;
+        this.telephone = telephone;
     }
     
     
@@ -121,7 +151,14 @@ public class Patient {
     return newreport;
     }
     
-    
+    public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
   
   
     public String getName() {
