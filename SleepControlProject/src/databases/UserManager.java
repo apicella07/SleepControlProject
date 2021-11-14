@@ -26,7 +26,7 @@ import java.sql.Connection;
  * @author marin
  */
 public class UserManager implements UserManagerInterface {
-
+//DA EL ERROR PORQUE FALTA POR CREAR EL DE UPDATE USER
 	private EntityManager em;
         private Connection c;
 	
@@ -57,27 +57,7 @@ public class UserManager implements UserManagerInterface {
 		return user;	
 	}
 	
-	@Override
-	public void updateUser(String username, byte[] password, int num) {
-		try {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		Query q = em.createNativeQuery("SELECT * FROM patients WHERE username = ?", User.class);
-		q.setParameter(1,username);
-		User user = (User) q.getSingleResult();
-				switch(num){
-					case 1: 
-						byte[] newPassword = (reader, "Introduce the new password:");
-						em.getTransaction().begin();
-						user.setPassword(newPassword);
-						em.getTransaction().commit();
-						break;
-					}
-			}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		em.close();
-	}
+	
 
 	public void deleteUser(User user) {
 		em.getTransaction().begin();
@@ -91,14 +71,10 @@ public class UserManager implements UserManagerInterface {
 	public User checkPassword(User userps) {
 		User user = null;
 		try {
-			String sql="SELECT * FROM Patients WHERE dni = ? AND password = ?";
-                        
-			PreparedStatement prep = c.prepareStatement(sql);
-                        ResultSet rs = prep.executeQuery();
-                        rs.setString(1, userps.getUsername());
-			rs.setString(2, userps.getPassword());
-			user = new User(username,byte[] password);
-                        
+			Query q = em.createNativeQuery("SELECT * FROM Users WHERE username = ? AND password = ?", User.class);
+			q.setParameter(1, userps.getUsername());
+			q.setParameter(2, userps.getPassword());
+			user = (User) q.getSingleResult();
 		} catch (NoResultException nre) {
 			// This is what happens when no result is retrieved
 			return null;
