@@ -16,9 +16,10 @@ import java.util.Date;
 public interface PatientManagerInterface {
     public void viewReport(String dni, Date dat);
     public void addpatientbyRegister(Patient pat);
-    public Patient searchSpecificPatientByTelephone(String telephone);
+    public Patient searchSpecificPatientByDNI(String dni);
     public Patient getPatient(int pat_id);
     public ArrayList<Patient> showPatients();
+    public Patient selectPatientByID(int id);
     
     
 

@@ -7,7 +7,7 @@ package databases;
 import Client.*;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 /**
  *
  * @author marin
@@ -20,8 +20,10 @@ public class PatientManager implements PatientManagerInterface  {
 	}
 	
 	
-	public void viewReport(String dni, Date date) {
-		try {
+	public void viewReport(String dni, Date dateRep) {
+            Report rep = new Report();
+            
+            try {
 			String sql = "SELECT patient_id FROM Patients WHERE DNI = ?";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, "%"+dni+"%");
@@ -30,14 +32,26 @@ public class PatientManager implements PatientManagerInterface  {
                         
                         String sql1= "SELECT REPORT FROM Reports WHERE patient_id =? AND DATE_REPORT LIKE =?";
                         PreparedStatement prep2 = c.prepareStatement(sql);
-			prep.setString(1, "%"+id+"%");
-                        prep.setString(2, "%"+date+"%");
+			prep.setString(1, "%"+id+"%")
+                        prep.setString(2, "%"+dateRep+"%");
 			ResultSet rs2 = prep.executeQuery();
-                        // COMO GUARDEMOS EL REPORT PONEMOS ESE TIPO DE DATO Y LUEGO rs.getBlob("REPORT");
-
-			while (rs.next()) {
-				//
-			}
+                        while (rs.next()) {
+                            Date dat= (Date) rs.getDate("report_date");
+                            String quality=rs.getString("quality");
+                            String exhaust=rs.getString("exhaustion");
+                            String averageHours=rs.getString("hours");
+                            String movem=rs.getString("movement");
+                            String timeToFall=rs.getString("time");
+                            String res=rs.getString("rest");
+                            String awake=rs.getString("awake");
+                            String dreams=rs.getString("dreams");
+                            String worr=rs.getString("worries");
+                            String mood=rs.getString("mood");
+                            String doubts=rs.getString("doubts");
+                            rep=new Report(dat,quality,exhaust,averageHours,movem,timeToFall,res,awake,dreams,worr,mood,doubts);
+                        }
+				
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -68,7 +82,7 @@ public class PatientManager implements PatientManagerInterface  {
 
 
 	public Patient selectPatientByID(int id) {
-		Patient patSelected;
+		Patient patSelected=new Patient();
 		try {
 			String sql = "SELECT * FROM Patients WHERE patient_id LIKE ?";
 			PreparedStatement prep = c.prepareStatement(sql);
@@ -98,7 +112,7 @@ public class PatientManager implements PatientManagerInterface  {
 			prep.setString(2, pat.getLastname());
 			prep.setString(3, pat.getTelephone());
                         prep.setString(4, pat.getAddress());
-                        prep.setDate(5, pat.getDateOfBirth());
+                        prep.setDate(5, (Date) pat.getDateOfBirth());
                         prep.setString(6, pat.getDni());
                         prep.setString(7, pat.getGender());
 			prep.executeUpdate();
@@ -108,9 +122,33 @@ public class PatientManager implements PatientManagerInterface  {
 			e.printStackTrace();
 			}
 	}
+         public Patient searchSpecificPatientByDNI(String dni){
+             Patient patientfound=new Patient();
+		try {
+			String sql = "SELECT * FROM Patients WHERE dni LIKE ?";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, dni);
+			ResultSet rs = prep.executeQuery();
+			
+			while(rs.next()) {
+				int id = rs.getInt("patient_id");
+				String name = rs.getString("name");
+				String lastname = rs.getString("lastname");
+				Date dob = rs.getDate("dob");
+				String address = rs.getString("address");
+				String tele = rs.getString("telephone");
+				String gender = rs.getString("gender");
+				patientfound = new Patient(id,name,lastname,tele,address,dob,dni,gender);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return patientfound;
+         }
 	
 	public Patient getPatient(int pat_id) {
-                Patient pat;
+                Patient pat = new Patient();
+                
 		try {
 			String sql = "SELECT * FROM Patients WHERE patient_id LIKE ?;";
 			PreparedStatement prep = c.prepareStatement(sql);
@@ -121,7 +159,10 @@ public class PatientManager implements PatientManagerInterface  {
 				String name = rs.getString("name");
 				String lastname = rs.getString("lastname");
                                 String telephone = rs.getString("lastname");
-				pat = new Patient(id, name, lastname, telephone);
+                                pat.setName(name);
+                                pat.setLastname(lastname);
+                                pat.setTelephone(telephone);
+                                
 			
 		}
 	}catch(Exception e) {
@@ -130,6 +171,11 @@ public class PatientManager implements PatientManagerInterface  {
 		return pat;
 		
 	}
+
+    @Override
+    public void viewReport(String dni, java.util.Date dat) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 	
 	

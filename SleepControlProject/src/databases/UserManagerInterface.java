@@ -20,6 +20,7 @@ public interface UserManagerInterface {
 	public void createUser(User user);
 
 	public User checkPassword(User user);
+        
         public User getUserByDNI(String dni);
 
 	public void updateUser(String username, byte[] password, int num);

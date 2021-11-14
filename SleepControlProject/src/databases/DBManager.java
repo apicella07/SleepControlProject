@@ -71,8 +71,7 @@ public class DBManager implements DBManagerInterface {
 					+ "ADDRESS TEXT," 
                                         + "DOB DATE,"
                                         + "DNI TEXT,"
-                                        + "GENDER TEXT,"
-					+ "FOREIGN KEY('hospital_id') REFERENCES hospital('hospital_id') ON DELETE SET NULL ON UPDATE CASCADE)";
+                                        + "GENDER TEXT,";
 
 			stmt1.executeUpdate(sql1);
 			stmt1.close();
@@ -82,8 +81,11 @@ public class DBManager implements DBManagerInterface {
 					+ "(patient_id	INTEGER PRIMARY KEY AUTOINCREMENT," 
 					+ "PATIENT_DNI TEXT,"
 					+ "REPORT_DATE DATE," 
-					+ "REPORT TEXT)";
-
+					+ "QUALITY TEXT,"+ "EXHAUSTION TEXT," 
+                                        + "HOURS TEXT,"
+                                        +"MOVEMENT TEXT,"+"TIME TEXT,"
+                                        +"REST TEXT,"+"AWAKE TEXT,"+"DREAMS TEXT,"+"WORRIES TEXT,"+"MOOD TEXT,"+"DOUBTS TEXT)";
+  
 			stmt2.executeUpdate(sql2);
 			stmt2.close();
 

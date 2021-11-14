@@ -10,16 +10,16 @@ import java.io.InputStreamReader;
 import java.security.MessageDigest;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
+import java.util.*;
 
-//import javax.persistence.EntityManager;
-//import javax.persistence.NoResultException;
-//import javax.persistence.Persistence;
-//import javax.persistence.Query;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
-import databases.UserManagerInterface;
-import Client.Patient;
-import Client.User;
+import databases.*;
+import Client.*;
+import java.sql.Connection;
 //import ui.InputFlow;
 /**
  *
@@ -28,6 +28,7 @@ import Client.User;
 public class UserManager implements UserManagerInterface {
 
 	private EntityManager em;
+        private Connection c;
 	
 	@Override
 	public void connect() {
@@ -65,7 +66,7 @@ public class UserManager implements UserManagerInterface {
 		User user = (User) q.getSingleResult();
 				switch(num){
 					case 1: 
-						byte[] newPassword = InputFlow.takePasswordAndHashIt(reader, "Introduce the new password:");
+						byte[] newPassword = (reader, "Introduce the new password:");
 						em.getTransaction().begin();
 						user.setPassword(newPassword);
 						em.getTransaction().commit();
@@ -90,11 +91,14 @@ public class UserManager implements UserManagerInterface {
 	public User checkPassword(User userps) {
 		User user = null;
 		try {
-			// Create the query
-			Query q = em.createNativeQuery("SELECT * FROM patients WHERE username = ? AND password = ?", User.class);
-			q.setParameter(1, userps.getUsername());
-			q.setParameter(2, userps.getPassword());
-			user = (User) q.getSingleResult();
+			String sql="SELECT * FROM Patients WHERE dni = ? AND password = ?";
+                        
+			PreparedStatement prep = c.prepareStatement(sql);
+                        ResultSet rs = prep.executeQuery();
+                        rs.setString(1, userps.getUsername());
+			rs.setString(2, userps.getPassword());
+			user = new User(username,byte[] password);
+                        
 		} catch (NoResultException nre) {
 			// This is what happens when no result is retrieved
 			return null;

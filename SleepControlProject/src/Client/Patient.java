@@ -31,6 +31,11 @@ public class Patient {
     private String dni; 
     private String gender; 
     
+    
+    public Patient() {
+		super();
+	}
+    
     public Patient(Integer id) {
 		super();
 		this.id = id;
