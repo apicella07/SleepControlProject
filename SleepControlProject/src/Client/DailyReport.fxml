@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.TextField?>
-<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="384.0" prefWidth="701.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.PatientDailyReportController">
-    <stylesheets>
-        <URL value="@patientdailyreport.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="424.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.DailyReportController">
    <children>
-      <AnchorPane layoutX="15.0" layoutY="12.0" maxHeight="-1.0" maxWidth="-1.0" prefHeight="348.0" prefWidth="720.0">
+      <AnchorPane layoutY="-14.0" maxHeight="-1.0" maxWidth="-1.0" prefHeight="348.0" prefWidth="720.0">
          <children>
             <Label layoutX="47.0" layoutY="7.0" prefHeight="74.0" prefWidth="219.0" text="DAILY REPORT" textAlignment="CENTER" wrapText="true">
                <font>
@@ -34,7 +30,7 @@
                         <Label layoutX="15.0" layoutY="106.0" text="Did you stir a lot during the night?" />
                         <TextField layoutX="218.0" layoutY="94.0" prefHeight="27.0" prefWidth="468.0" />
                         <Label layoutX="15.0" layoutY="135.0" text="How long until you fall asleep? Does it take too long or a few minutes?" />
-                        <TextField layoutX="433.0" layoutY="124.0" prefHeight="27.0" prefWidth="252.0" />
+                        <TextField layoutX="431.0" layoutY="211.0" prefHeight="27.0" prefWidth="252.0" />
                         <Label layoutX="15.0" layoutY="161.0" text="Have you rested?" />
                         <TextField layoutX="123.0" layoutY="149.0" prefHeight="27.0" prefWidth="568.0" AnchorPane.rightAnchor="54.0" />
                         <Label layoutX="15.0" layoutY="189.0" text="Are you able to stay awake during the day?" />
@@ -55,6 +51,6 @@
             <Button layoutX="632.0" layoutY="309.0" mnemonicParsing="false" onAction="#goBackClientMenu" text="Back" />
          </children>
       </AnchorPane>
-      <TextArea layoutX="-1.0" layoutY="426.0" prefHeight="71.0" prefWidth="768.0" promptText="Worries or Questions to the doctor?" />
+      <TextArea layoutX="5.0" layoutY="383.0" prefHeight="71.0" prefWidth="768.0" promptText="Worries or Questions to the doctor?" />
    </children>
 </AnchorPane>

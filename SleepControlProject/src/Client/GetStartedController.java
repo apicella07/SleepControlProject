@@ -58,7 +58,7 @@ public class GetStartedController implements Initializable {
      
         public void changeScreenButtonWhenPushed(ActionEvent event) throws IOException{
              
-           Parent welcomeWindow = FXMLLoader.load(getClass().getResource("WelcomeWindow.fxml"));
+           Parent welcomeWindow = FXMLLoader.load(getClass().getResource("WelcomeWindowApp.fxml"));
            Scene welcomeScene = new Scene(welcomeWindow);
            
            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow(); //node object you can get the scene and the windowand cast it as a scene

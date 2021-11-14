@@ -39,7 +39,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.LoginController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.LoginController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
@@ -52,8 +52,8 @@
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <Button layoutX="245.0" layoutY="327.0" mnemonicParsing="false" text="Back" />
-            <Button layoutX="390.0" layoutY="327.0" mnemonicParsing="false" text="Continue" />
+            <Button layoutX="245.0" layoutY="327.0" mnemonicParsing="false" onAction="#GoBack" text="Back" />
+            <Button layoutX="390.0" layoutY="327.0" mnemonicParsing="false" onAction="#ContinueButton" text="Continue" />
       </children>
     </AnchorPane>
   </children>

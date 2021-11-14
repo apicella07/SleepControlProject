@@ -5,39 +5,37 @@
  */
 package Client;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
-
 import java.awt.event.ActionEvent;
-import javafx.application.Application;
-import javafx.fxml.*;
-import javafx.scene.*;
-import Client.User;
-import Client.Patient;
-import Client.Patient;
-import Client.User;
+import java.io.IOException;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import javafx.scene.control.*;
 import java.util.Date;
-import static javafx.application.Application.launch;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-
 
 /**
  * FXML Controller class
  *
  * @author gabri
  */
-public class ModifyInfoController extends User {
+public class ModifyInformationController implements Initializable {
 
     /**
      * Initializes the controller class.
      */
-    
-    @FXML private Label modifyinformation; //i dont know if its necessary to add here the labels 
+      @FXML private Label modifyinformation; //i dont know if its necessary to add here the labels 
     @FXML private TextField Name;
     @FXML private TextField Lastname;
     @FXML private TextField DNI;
@@ -78,6 +76,21 @@ Date date1;
         primaryStage.show();
     }
     
-   
+      public void goBackClientMenu (javafx.event.ActionEvent event) throws IOException{
+           Parent root = FXMLLoader.load(getClass().getResource("OptionsMenu.fxml"));
+        
+        Scene clientMenu = new Scene(root);
+        
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        
+        window.setScene(clientMenu);
+        window.show();
+     }
+     
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
     
 }

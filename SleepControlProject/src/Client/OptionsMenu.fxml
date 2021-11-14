@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="Client.OptionsMenuController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-1.0" maxWidth="-1.0" onDragDetected="#start" prefHeight="413.0" prefWidth="648.0" style="-fx-background-color: white;">
+         <children>
+            <Button fx:id="ReportHistory" layoutX="76.0" layoutY="184.0" mnemonicParsing="false" onAction="#ReportHistory" text="REPORT HISTORY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="DailyReport" layoutX="243.0" layoutY="184.0" mnemonicParsing="false" onAction="#TodaysReport" prefHeight="31.0" prefWidth="121.0" text="DAILY REPORT">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="ModifyInfo" layoutX="413.0" layoutY="184.0" mnemonicParsing="false" onAction="#ModifyInformation" text="MODIFY INFO">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="clientmenu" layoutX="191.0" layoutY="50.0" style="-fx-background-color: white;" text="CLIENT MENU" textFill="#2b2626">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="Back" layoutX="93.0" layoutY="308.0" mnemonicParsing="false" onAction="#goBackLogin" prefHeight="31.0" prefWidth="51.0" text="Back">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </AnchorPane>
+   </children>
+</AnchorPane>

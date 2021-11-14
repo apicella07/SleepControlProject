@@ -28,12 +28,12 @@ public class BitalinoDemo {
             String macAddress = "20:17:11:20:52:36";
             
             //Sampling rate, should be 10, 100 or 1000
-            int SamplingRate = 10;
+            int SamplingRate = 100; //partimos de 100 maybe es mas, maybe no 
             bitalino.open(macAddress, SamplingRate);
 
             // Start acquisition on analog channels A2 and A6
             // For example, If you want A1, A3 and A4 you should use {0,2,3}
-            int[] channelsToAcquire = {1, 5}; //CAMBIOS AQUI!!! PARA EL EEG
+            int[] channelsToAcquire = {4,6}; //CAMBIOS AQUI!!! PARA EL EEG
             bitalino.start(channelsToAcquire);
 
             //Read in total 10000000 times
@@ -48,7 +48,7 @@ public class BitalinoDemo {
                 //Print the samples
                 for (int i = 0; i < frame.length; i++) {
                     System.out.println((j * block_size + i) + " seq: " + frame[i].seq + " "
-                            + frame[i].analog[0] + " "
+                            + frame[i].analog[0] + " " 
                             + frame[i].analog[1] + " "
                     //  + frame[i].analog[2] + " "
                     //  + frame[i].analog[3] + " "

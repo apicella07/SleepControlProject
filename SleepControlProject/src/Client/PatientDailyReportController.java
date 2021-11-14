@@ -18,6 +18,7 @@ import Client.User;
 import Client.Patient;
 import Client.Patient;
 import Client.User;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javafx.scene.control.*;
@@ -95,6 +96,17 @@ public class PatientDailyReportController extends User{
         primaryStage.show();
     }      
            
+       public void goBackClientMenu (javafx.event.ActionEvent event) throws IOException{
+           Parent root = FXMLLoader.load(getClass().getResource("OptionsMenu.fxml"));
+        
+        Scene clientMenu = new Scene(root);
+        
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        
+        window.setScene(clientMenu);
+        window.show();
+     }
+     
     
    /* 
     @Override
