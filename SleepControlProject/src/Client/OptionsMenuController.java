@@ -112,6 +112,34 @@ public class OptionsMenuController implements Initializable {
         window.setScene(login);
         window.show();
     }
+    
+       @FXML
+    private void viewEEG(javafx.event.ActionEvent event) throws IOException {
+               
+        Parent root = FXMLLoader.load(getClass().getResource("viewEEG.fxml"));
+        
+        Scene vieweeg = new Scene(root);
+        
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        window.setScene(vieweeg);
+        window.show();
+    }
+    
+    
+           @FXML
+    private void EEGhistory(javafx.event.ActionEvent event) throws IOException {
+               
+        Parent root = FXMLLoader.load(getClass().getResource("EEGhistory.fxml"));
+        
+        Scene historyeeg = new Scene(root);
+        
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        window.setScene(historyeeg);
+        window.show();
+    }
+    
 
     @FXML
     private void start(MouseEvent event) {
