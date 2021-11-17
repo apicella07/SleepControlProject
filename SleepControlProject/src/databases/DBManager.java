@@ -56,7 +56,7 @@ public class DBManager implements DBManagerInterface {
 			// Open database connection
 			// Class.forName("org.sqlite.JDBC");
 			// Connection c =
-			// DriverManager.getConnection("jdbc:sqlite:./db/Prosthetic_DB.db");
+			// DriverManager.getConnection("jdbc:sqlite:./db/SleepControlDB.db");
 			// c.createStatement().execute("PRAGMA foreign_keys=ON");
 			// System.out.println("Database connection opened.");
 			// connect();
@@ -71,7 +71,7 @@ public class DBManager implements DBManagerInterface {
 					+ "ADDRESS TEXT," 
                                         + "DOB DATE,"
                                         + "DNI TEXT,"
-                                        + "GENDER TEXT,";
+                                        + "GENDER TEXT";
 
 			stmt1.executeUpdate(sql1);
 			stmt1.close();
@@ -84,7 +84,7 @@ public class DBManager implements DBManagerInterface {
 					+ "QUALITY TEXT,"+ "EXHAUSTION TEXT," 
                                         + "HOURS TEXT,"
                                         +"MOVEMENT TEXT,"+"TIME TEXT,"
-                                        +"REST TEXT,"+"AWAKE TEXT,"+"DREAMS TEXT,"+"WORRIES TEXT,"+"MOOD TEXT,"+"DOUBTS TEXT)";
+                                        +"REST TEXT,"+"AWAKE TEXT,"+"TIMES AWAKE"+"DREAMS TEXT,"+"WORRIES TEXT,"+"MOOD TEXT,"+"DOUBTS TEXT)";
   
 			stmt2.executeUpdate(sql2);
 			stmt2.close();
@@ -98,6 +98,14 @@ public class DBManager implements DBManagerInterface {
 					+ "EEG TEXT)";
 
 			stmt3.executeUpdate(sql3);
+			stmt3.close();
+                        Statement stmt4 = c.createStatement();
+			String sql4 = "CREATE TABLE Users " 
+					+ "(patient_id INTEGER PRIMARY KEY AUTOINCREMENT," 
+					+ "PATIENT_DNI TEXT,"
+                                        + "Password";
+
+			stmt3.executeUpdate(sql4);
 			stmt3.close();
 
 			System.out.println("Tables created.");

@@ -6,6 +6,7 @@
 package databases;
 import Client.*;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.*;
 /**
@@ -32,11 +33,12 @@ public class PatientManager implements PatientManagerInterface  {
                         
                         String sql1= "SELECT REPORT FROM Reports WHERE patient_id =? AND DATE_REPORT LIKE =?";
                         PreparedStatement prep2 = c.prepareStatement(sql);
-			prep.setString(1, "%"+id+"%")
+			prep.setString(1, "%"+id+"%");
                         prep.setString(2, "%"+dateRep+"%");
 			ResultSet rs2 = prep.executeQuery();
                         while (rs.next()) {
-                            Date dat= (Date) rs.getDate("report_date");
+                            java.sql.Date datesql= (java.sql.Date) rs.getDate("report_date");
+                            java.util.Date  dat = new java.util.Date(datesql.getTime());
                             String quality=rs.getString("quality");
                             String exhaust=rs.getString("exhaustion");
                             String averageHours=rs.getString("hours");
@@ -44,11 +46,12 @@ public class PatientManager implements PatientManagerInterface  {
                             String timeToFall=rs.getString("time");
                             String res=rs.getString("rest");
                             String awake=rs.getString("awake");
+                            String timAwake=rs.getString("times awake");
                             String dreams=rs.getString("dreams");
                             String worr=rs.getString("worries");
                             String mood=rs.getString("mood");
                             String doubts=rs.getString("doubts");
-                            rep=new Report(dat,quality,exhaust,averageHours,movem,timeToFall,res,awake,dreams,worr,mood,doubts);
+                            rep=new Report(dat,quality,exhaust,averageHours,movem,timeToFall,res,awake,timAwake,dreams,worr,mood,doubts);
                         }
 				
 			
@@ -58,7 +61,6 @@ public class PatientManager implements PatientManagerInterface  {
 	}
 	
 	public ArrayList<Patient> showPatients() {
-		// To show all Hospitals in our data base
 		ArrayList<Patient> patList = new ArrayList<Patient>();
 		try {
 			String sql = "SELECT * FROM Patients";
@@ -112,7 +114,7 @@ public class PatientManager implements PatientManagerInterface  {
 			prep.setString(2, pat.getLastname());
 			prep.setString(3, pat.getTelephone());
                         prep.setString(4, pat.getAddress());
-                        prep.setDate(5, (Date) pat.getDateOfBirth());
+                        prep.setDate(5, (java.sql.Date) pat.getDateOfBirth());
                         prep.setString(6, pat.getDni());
                         prep.setString(7, pat.getGender());
 			prep.executeUpdate();
@@ -134,7 +136,8 @@ public class PatientManager implements PatientManagerInterface  {
 				int id = rs.getInt("patient_id");
 				String name = rs.getString("name");
 				String lastname = rs.getString("lastname");
-				Date dob = rs.getDate("dob");
+				java.sql.Date dobsql = rs.getDate("dob");
+                                java.util.Date  dob = new java.util.Date(dobsql.getTime());
 				String address = rs.getString("address");
 				String tele = rs.getString("telephone");
 				String gender = rs.getString("gender");
