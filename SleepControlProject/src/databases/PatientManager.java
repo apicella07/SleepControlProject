@@ -21,7 +21,7 @@ public class PatientManager implements PatientManagerInterface  {
 	}
 	
 	
-	public void viewReport(String dni, Date dateRep) {
+	public void viewReport(String dni, java.util.Date dateRep) {
             Report rep = new Report();
             
             try {
@@ -175,11 +175,7 @@ public class PatientManager implements PatientManagerInterface  {
 		
 	}
 
-    @Override
-    public void viewReport(String dni, java.util.Date dat) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-	
+   
 	
 	
 	
