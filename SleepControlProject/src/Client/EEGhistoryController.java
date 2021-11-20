@@ -34,7 +34,6 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author gabri
  */
 public class EEGhistoryController implements Initializable {
 

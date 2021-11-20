@@ -14,10 +14,8 @@ import java.util.Objects;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-/**
- *
- * @author marin
- */
+
+
 public class Users implements Serializable{
     private static final long serialVersionUID=-123;
     private String user;

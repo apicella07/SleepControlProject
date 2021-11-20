@@ -6,10 +6,9 @@
 package sleepcontrolproject;
 import Client.*;
 
-/**
- *
- * @author gabri
- */
+
+
+
 public class SleepControlProject {
 
     /**

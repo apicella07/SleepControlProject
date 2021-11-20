@@ -5,10 +5,8 @@
  */
 package databases;
 
-/**
- *
- * @author marin
- */
+
+
 public interface DBManagerInterface {
         public void connect();
 	public void disconnect();

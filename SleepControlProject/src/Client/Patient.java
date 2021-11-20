@@ -14,10 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-/**
- *
- * @author gabri
- */
+
 public class Patient {
     
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

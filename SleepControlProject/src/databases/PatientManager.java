@@ -9,10 +9,9 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.*;
-/**
- *
- * @author marin
- */
+
+
+
 public class PatientManager implements PatientManagerInterface  {
     private Connection c;
 	
@@ -21,7 +20,7 @@ public class PatientManager implements PatientManagerInterface  {
 	}
 	
 	
-	public void viewReport(String dni, java.util.Date dateRep) {
+	public Report viewReport(String dni, java.util.Date dateRep) {
             Report rep = new Report();
             
             try {
@@ -58,6 +57,7 @@ public class PatientManager implements PatientManagerInterface  {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+            return rep;
 	}
 	
 	public ArrayList<Patient> showPatients() {

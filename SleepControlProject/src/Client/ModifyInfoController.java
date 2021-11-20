@@ -29,7 +29,6 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author gabri
  */
 public class ModifyInfoController extends User {
 

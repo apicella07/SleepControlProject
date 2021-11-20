@@ -8,10 +8,7 @@ package databases;
 import java.sql.*;
 import Client.User;
 
-/**
- *
- * @author marin
- */
+
 public class DBManager implements DBManagerInterface {
 
 	private Connection c;

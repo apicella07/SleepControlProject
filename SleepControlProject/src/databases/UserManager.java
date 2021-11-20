@@ -20,13 +20,11 @@ import javax.persistence.Query;
 import databases.*;
 import Client.*;
 import java.sql.Connection;
-//import ui.InputFlow;
-/**
- *
- * @author marin
- */
+
+
+
+
 public class UserManager implements UserManagerInterface {
-//DA EL ERROR PORQUE FALTA POR CREAR EL DE UPDATE USER
 	private EntityManager em;
         private Connection c;
 	

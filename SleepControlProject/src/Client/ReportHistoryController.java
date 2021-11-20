@@ -31,7 +31,6 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author gabri
  */
 public class ReportHistoryController implements Initializable {
 

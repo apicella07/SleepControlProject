@@ -29,7 +29,6 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author mmsan
  */
 public class PatientDailyReportController extends User{
 

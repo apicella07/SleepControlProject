@@ -28,7 +28,6 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author gabri
  */
 public class ModifyInformationController implements Initializable {
 

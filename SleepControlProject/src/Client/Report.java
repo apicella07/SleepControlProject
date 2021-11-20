@@ -6,10 +6,9 @@
 package Client;
 
 import java.util.*;
-/**
- *
- * @author gabri
- */
+
+
+
 public class Report {
     
     private Date todaysDate;

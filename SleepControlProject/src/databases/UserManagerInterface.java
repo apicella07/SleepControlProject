@@ -7,10 +7,8 @@ package databases;
 import java.util.List;
 import Client.User;
 
-/**
- *
- * @author marin
- */
+
+
 public interface UserManagerInterface {
     
 	public void connect();

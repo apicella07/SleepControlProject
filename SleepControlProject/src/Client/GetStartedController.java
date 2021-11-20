@@ -26,11 +26,7 @@ import static javafx.application.Application.launch;
 import javafx.stage.Stage;
 
 
-/**
- * FXML Controller class
- *
- * @author gabri
- */
+
 public class GetStartedController implements Initializable {
 
     /**
@@ -56,7 +52,7 @@ public class GetStartedController implements Initializable {
         
     }
      
-        public void changeScreenButtonWhenPushed(ActionEvent event) throws IOException{
+        public void changeScreenButtonWhenPushed(javafx.event.ActionEvent event) throws IOException{
              
            Parent welcomeWindow = FXMLLoader.load(getClass().getResource("WelcomeWindowApp.fxml"));
            Scene welcomeScene = new Scene(welcomeWindow);

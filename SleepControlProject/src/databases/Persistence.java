@@ -11,10 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- *
- * @author marin
- */
+
+
 @Entity
 public class Persistence implements Serializable {
 
