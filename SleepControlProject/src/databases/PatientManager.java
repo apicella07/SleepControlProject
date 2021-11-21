@@ -13,6 +13,8 @@ import java.util.*;
 
 
 public class PatientManager implements PatientManagerInterface  {
+
+   
     private Connection c;
 	
 	public PatientManager(Connection connection) {
@@ -124,6 +126,7 @@ public class PatientManager implements PatientManagerInterface  {
 			e.printStackTrace();
 			}
 	}
+    @Override
          public Patient searchSpecificPatientByDNI(String dni){
              Patient patientfound=new Patient();
 		try {
@@ -149,6 +152,7 @@ public class PatientManager implements PatientManagerInterface  {
 		return patientfound;
          }
 	
+    @Override
 	public Patient getPatient(int pat_id) {
                 Patient pat = new Patient();
                 

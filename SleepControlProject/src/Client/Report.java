@@ -11,6 +11,7 @@ import java.util.*;
 
 public class Report {
     
+    
     private Date todaysDate;
     private String sleepQuality; //Have you slept well during the night? yes or no
     private String exhaustion; //Do you feel exhausted like you didn’t sleep through the night? yes or no
