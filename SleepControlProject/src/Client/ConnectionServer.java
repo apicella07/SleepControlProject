@@ -201,15 +201,13 @@ public class ConnectionServer implements Runnable {
             Object newpat= null;
             ObjectOutputStream objectOut=null;
             Patient patientconnected = (Patient) newpat;
-            Integer dni = patientconnected.getId();
+            String dni = patientconnected.getDni();
             print=new PrintWriter(socketSender.getOutputStream(),true);
             System.out.println("The patient you are going to send is:\n" + patientconnected.toString()); 
-            Patient pat = getPatientByDNI(dni); //Es la que se va a crear
+            Patient pat = PatientManager.getPatientByDNI(dni); //Es la que se va a crear
             objectOut=new ObjectOutputStream(socketSender.getOutputStream());
             objectOut.writeObject(pat);
             while((newpat= ois.readObject())!= null){
-                
-                
                 ArrayList<Report> reports = PatientManager.viewReportHistory(dni); //NO se si va a ser con arraylist aun o si es una tabla. Si es una tabla la tabla puede ser un Objeto
                 objectOut.writeObject(reports);
             }

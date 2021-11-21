@@ -15,15 +15,14 @@ import java.util.*;
 
 public class PatientManager implements PatientManagerInterface  {
 
-   
-    private Connection c;
+private Connection c;
 	
 	public PatientManager(Connection connection) {
 		this.c=connection;
 	}
 	
 	
-	public Report viewReport(String dni, Date dateRep) {
+	public Report viewReport(String dni, java.util.Date dateRep) {
             Report rep = new Report();
             
             try {
@@ -140,35 +139,7 @@ public class PatientManager implements PatientManagerInterface  {
 			e.printStackTrace();
 			}
 	}
-    @Override
-         public Patient searchSpecificPatientByDNI(String dni){
-             Patient patientfound=new Patient();
-		try {
-			String sql = "SELECT * FROM Patients WHERE dni LIKE ?";
-			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setString(1, dni);
-			ResultSet rs = prep.executeQuery();
-			
-			while(rs.next()) {
-				int id = rs.getInt("patient_id");
-				String name = rs.getString("name");
-				String lastname = rs.getString("lastname");
-				java.sql.Date dobsql = rs.getDate("dob");
-                                java.util.Date  dob = new java.util.Date(dobsql.getTime());
-				String address = rs.getString("address");
-				String tele = rs.getString("telephone");
-				String gender = rs.getString("gender");
-				patientfound = new Patient(id,name,lastname,tele,address,dob,dni,gender);
-			}
-                        
-                    rs.close();
-                    prep.close();
-                    
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return patientfound;
-         }
+   
 	
     @Override
 	public Patient getPatient(int pat_id) {
@@ -185,7 +156,8 @@ public class PatientManager implements PatientManagerInterface  {
 				String lastname = rs.getString("lastname");
                                 String telephone = rs.getString("telephone");
                                 String address = rs.getString ("address");
-                                Date date = rs.getDate("date"); 
+                                java.sql.Date dateSql = rs.getDate("date"); 
+                                java.util.Date  date = new java.util.Date(dateSql.getTime());
                                 String gender = rs.getString("gender");
                                 
                                 pat.setName(name);
@@ -224,7 +196,8 @@ public class PatientManager implements PatientManagerInterface  {
 				String lastname = rs.getString("lastname");
                                 String telephone = rs.getString("telephone");
                                 String address = rs.getString ("address");
-                                Date date = rs.getDate("date");
+                                java.sql.Date datesql = rs.getDate("date");
+                                java.util.Date  date = new java.util.Date(datesql.getTime());
                                 String gender = rs.getString("gender");
                                 
                                 pat.setName(name);
@@ -299,7 +272,7 @@ public class PatientManager implements PatientManagerInterface  {
        // METODOS ABSTRACTOS, AUN NO ESTAN HECHOS PERO LOS HE IMPLEMENTADO
         
     @Override
-    public EEG viewEEG(String dni, Date date) {
+    public EEG viewEEG(String dni, java.util.Date date) {
          EEG eeg = new EEG();
             
             try {
@@ -335,15 +308,42 @@ public class PatientManager implements PatientManagerInterface  {
     }
 
     @Override
-    public EEG viewEEGHistory(String dni) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<EEG> viewEEGHistory(String dni) {
+         ArrayList<EEG> eegs = new ArrayList<EEG>();
+         ArrayList<Integer> values=new ArrayList<>();
+            try {
+			String sql = "SELECT patient_id FROM Patients WHERE DNI = ?";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, "%"+dni+"%");
+                        ResultSet rs = prep.executeQuery();
+                        int id = rs.getInt("patient_id");
+                        
+                        String sql1= "SELECT EEG FROM EEGs WHERE patient_id =?";
+                        PreparedStatement prep1 = c.prepareStatement(sql1);
+			prep1.setString(1, "%"+id+"%");  //NO SE SI ESTO ESTA BIEN PORQUE DEBERIA SER SetDate PEOR DA ERROR
+                        
+			ResultSet rs2 = prep1.executeQuery();
+                        while (rs2.next()) {
+                            //String valuesString=rs2.getInt("Values");
+                            //Debería ser un text en el que estén separados los valores por comas o algo y luego ccrear un arrayList<Integer> con ese STring
+                            //values= la creación del array list
+                            EEG eeg= new EEG(values);
+                            
+                            eegs.add(eeg);
+                           // eeg =new EEG(eeg_date, EEG); //No se como ya que no hay constructor en la clase EEG
+                      }
+                        
+                       
+                        
+                      rs2.close();
+                      prep1.close();
+                      rs.close();
+                      prep.close();  
+				
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+            return eegs;
     }
-   
-     
-   
-	
-	
-	
-	
-	
 }
