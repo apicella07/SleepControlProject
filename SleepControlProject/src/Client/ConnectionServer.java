@@ -5,11 +5,11 @@
  */
 package Client;
 
+import Database.PatientManager;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import Client.*;
-import databases.*;
 import java.io.IOException;
 import java.net.*;
 import java.text.ParseException;

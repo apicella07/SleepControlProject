@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="313.0" prefWidth="305.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GraphicInterfaceClient.ConnectToServerController">
+   <children>
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="71.0" prefWidth="274.0" style="-fx-background-color: grey;">
+         <children>
+            <Label layoutX="39.0" layoutY="17.0" text="CONNECTION" textFill="WHITE">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button layoutX="117.0" layoutY="212.0" mnemonicParsing="false" onAction="#connect" text="Connect" />
+      <GridPane layoutX="32.0" layoutY="118.0" prefHeight="61.0" prefWidth="234.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.0" minWidth="10.0" prefWidth="67.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="167.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Address:" />
+            <Label text="Port:" GridPane.rowIndex="1" />
+            <TextField fx:id="address" GridPane.columnIndex="1" />
+            <TextField fx:id="port" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <Label layoutX="32.0" layoutY="95.0" text="SERVER:" />
+      <Label fx:id="label" layoutX="32.0" layoutY="188.0" text="Label" />
+   </children>
+</AnchorPane>

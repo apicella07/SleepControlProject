@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Client;
+package GraphicInterfaceClient;
 
+import Client.Patient;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;

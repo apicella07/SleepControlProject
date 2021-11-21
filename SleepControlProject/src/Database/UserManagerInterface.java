@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package databases;
+package Database;
 import java.util.List;
 import Client.User;
 
