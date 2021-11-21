@@ -178,6 +178,33 @@ public class PatientManager implements PatientManagerInterface  {
 		return pat;
 		
 	}
+        
+            @Override
+	public Patient getPatientByDNI(String dni) {
+                Patient pat = new Patient();
+                
+		try {
+			String sql = "SELECT * FROM Patients WHERE DNI= ?;";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setInt(1, dni);
+			ResultSet rs = prep.executeQuery();
+			while(rs.next()) {
+				int id = rs.getInt("patient_id");
+				String name = rs.getString("name");
+				String lastname = rs.getString("lastname");
+                                String telephone = rs.getString("lastname");
+                                pat.setName(name);
+                                pat.setLastname(lastname);
+                                pat.setTelephone(telephone);
+                                
+			
+		}
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
+		return pat;
+		
+	}
 
    
 	

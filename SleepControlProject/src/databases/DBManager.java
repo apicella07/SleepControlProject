@@ -130,8 +130,7 @@ public class DBManager implements DBManagerInterface {
 			// c.close();
 			// System.out.println("Database connection closed.");
 	
-			
-			
+		
 			
 		} catch (SQLException e) {
 			if (e.getMessage().contains("already exists")) {
