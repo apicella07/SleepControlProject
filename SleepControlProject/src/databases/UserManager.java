@@ -79,5 +79,22 @@ public class UserManager implements UserManagerInterface {
 		}
 		return user;
 	}
+        
+            @Override
+        public void updateUser(String username, byte[] password, int num){
+            
+                Query q = em.createNativeQuery("SELECT * FROM User WHERE id = ?", User.class);
+                q.setParameter(1, username);
+                q.setParameter(2, password);
+                q.setParameter(3, num);
+		User u = (User) q.getSingleResult();
+		em.getTransaction().begin(); // Begin transaction
+		// Make changes
+		u.setUsername(username);
+                u.setPassword(password);
+		em.getTransaction().commit();
+		em.close(); // Close the entity manager
+        }
+
 
 }

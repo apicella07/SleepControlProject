@@ -102,8 +102,8 @@ public class DBManager implements DBManagerInterface {
 					+ "PATIENT_DNI TEXT,"
                                         + "Password";
 
-			stmt3.executeUpdate(sql4);
-			stmt3.close();
+			stmt4.executeUpdate(sql4);
+			stmt4.close();
 
 			System.out.println("Tables created.");
 			// Create table: end
