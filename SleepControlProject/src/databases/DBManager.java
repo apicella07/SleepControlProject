@@ -66,7 +66,7 @@ public class DBManager implements DBManagerInterface {
 					+ "LASTNAME TEXT,"
 					+ "TELEPHONE TEXT," 
 					+ "ADDRESS TEXT," 
-                                        + "DOB DATE,"
+                                        + "DOB DATE NOT NULL,"
                                         + "DNI TEXT,"
                                         + "GENDER TEXT";
 
@@ -78,10 +78,18 @@ public class DBManager implements DBManagerInterface {
 					+ "(patient_id	INTEGER PRIMARY KEY AUTOINCREMENT," 
 					+ "PATIENT_DNI TEXT,"
 					+ "REPORT_DATE DATE," 
-					+ "QUALITY TEXT,"+ "EXHAUSTION TEXT," 
+					+ "QUALITY TEXT,"
+                                        + "EXHAUSTION TEXT," 
                                         + "HOURS TEXT,"
-                                        +"MOVEMENT TEXT,"+"TIME TEXT,"
-                                        +"REST TEXT,"+"AWAKE TEXT,"+"TIMES AWAKE"+"DREAMS TEXT,"+"WORRIES TEXT,"+"MOOD TEXT,"+"DOUBTS TEXT)";
+                                        +"MOVEMENT TEXT,"
+                                        +"TIME TEXT,"
+                                        +"REST TEXT,"
+                                        +"AWAKE TEXT,"
+                                        +"TIMES AWAKE"
+                                        +"DREAMS TEXT,"
+                                        +"WORRIES TEXT,"
+                                        +"MOOD TEXT,"
+                                        +"DOUBTS TEXT)";
   
 			stmt2.executeUpdate(sql2);
 			stmt2.close();

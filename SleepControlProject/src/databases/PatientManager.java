@@ -8,6 +8,7 @@ import Client.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.*;
 
 
@@ -22,7 +23,7 @@ public class PatientManager implements PatientManagerInterface  {
 	}
 	
 	
-	public Report viewReport(String dni, java.util.Date dateRep) {
+	public Report viewReport(String dni, Date dateRep) {
             Report rep = new Report();
             
             try {
@@ -33,28 +34,33 @@ public class PatientManager implements PatientManagerInterface  {
                         int id = rs.getInt("patient_id");
                         
                         String sql1= "SELECT REPORT FROM Reports WHERE patient_id =? AND DATE_REPORT LIKE =?";
-                        PreparedStatement prep2 = c.prepareStatement(sql);
-			prep.setString(1, "%"+id+"%");
-                        prep.setString(2, "%"+dateRep+"%");
-			ResultSet rs2 = prep.executeQuery();
-                        while (rs.next()) {
-                            java.sql.Date datesql= (java.sql.Date) rs.getDate("report_date");
+                        PreparedStatement prep1 = c.prepareStatement(sql1);
+			prep1.setString(1, "%"+id+"%");
+                        prep1.setString(2, "%"+dateRep+"%"); //NO SE SI ESTO ESTA BIEN PORQUE DEBERIA SER SetDate PEOR DA ERROR
+			ResultSet rs2 = prep1.executeQuery();
+                        while (rs2.next()) {
+                            java.sql.Date datesql= (java.sql.Date) rs2.getDate("report_date");
                             java.util.Date  dat = new java.util.Date(datesql.getTime());
-                            String quality=rs.getString("quality");
-                            String exhaust=rs.getString("exhaustion");
-                            String averageHours=rs.getString("hours");
-                            String movem=rs.getString("movement");
-                            String timeToFall=rs.getString("time");
-                            String res=rs.getString("rest");
-                            String awake=rs.getString("awake");
-                            String timAwake=rs.getString("times awake");
-                            String dreams=rs.getString("dreams");
-                            String worr=rs.getString("worries");
-                            String mood=rs.getString("mood");
-                            String doubts=rs.getString("doubts");
+                            String quality=rs2.getString("quality");
+                            String exhaust=rs2.getString("exhaustion");
+                            String averageHours=rs2.getString("hours");
+                            String movem=rs2.getString("movement");
+                            String timeToFall=rs2.getString("time");
+                            String res=rs2.getString("rest");
+                            String awake=rs2.getString("awake");
+                            String timAwake=rs2.getString("times awake");
+                            String dreams=rs2.getString("dreams");
+                            String worr=rs2.getString("worries");
+                            String mood=rs2.getString("mood");
+                            String doubts=rs2.getString("doubts");
                             rep=new Report(dat,quality,exhaust,averageHours,movem,timeToFall,res,awake,timAwake,dreams,worr,mood,doubts);
                         }
-				
+			
+                        
+                    rs2.close();
+                    prep1.close();
+                    rs.close();
+                    prep.close(); 
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -77,6 +83,9 @@ public class PatientManager implements PatientManagerInterface  {
 				Patient newPatient = new Patient(patId, patName, patAddress, patTele);
 				patList.add(newPatient);
 			}
+                        
+                    rs.close();
+                    prep.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -96,8 +105,12 @@ public class PatientManager implements PatientManagerInterface  {
 				String name = rs.getString("name");
 				String lastname = rs.getString("lastname");
 				String telephone = rs.getString("telephone");
+                                
                                 patSelected = new Patient(name, lastname,telephone);
 			}
+                        
+                    rs.close();
+                    prep.close();
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -122,6 +135,7 @@ public class PatientManager implements PatientManagerInterface  {
 			prep.executeUpdate();
 			prep.close();
 			}
+                
 		catch(Exception e) {
 			e.printStackTrace();
 			}
@@ -146,6 +160,10 @@ public class PatientManager implements PatientManagerInterface  {
 				String gender = rs.getString("gender");
 				patientfound = new Patient(id,name,lastname,tele,address,dob,dni,gender);
 			}
+                        
+                    rs.close();
+                    prep.close();
+                    
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -165,13 +183,25 @@ public class PatientManager implements PatientManagerInterface  {
 				int id = rs.getInt("patient_id");
 				String name = rs.getString("name");
 				String lastname = rs.getString("lastname");
-                                String telephone = rs.getString("lastname");
+                                String telephone = rs.getString("telephone");
+                                String address = rs.getString ("address");
+                                Date date = rs.getDate("date"); 
+                                String gender = rs.getString("gender");
+                                
                                 pat.setName(name);
                                 pat.setLastname(lastname);
                                 pat.setTelephone(telephone);
+                                pat.setAddress(address);
+                                pat.setDateOfBirth(date);
+                                pat.setGender(gender);
                                 
 			
 		}
+                        
+                rs.close();
+                prep.close();
+                
+                
 	}catch(Exception e) {
 		e.printStackTrace();
 	}
@@ -186,26 +216,130 @@ public class PatientManager implements PatientManagerInterface  {
 		try {
 			String sql = "SELECT * FROM Patients WHERE DNI= ?;";
 			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setInt(1, dni);
+			prep.setString(1, dni);
 			ResultSet rs = prep.executeQuery();
 			while(rs.next()) {
 				int id = rs.getInt("patient_id");
 				String name = rs.getString("name");
 				String lastname = rs.getString("lastname");
-                                String telephone = rs.getString("lastname");
+                                String telephone = rs.getString("telephone");
+                                String address = rs.getString ("address");
+                                Date date = rs.getDate("date");
+                                String gender = rs.getString("gender");
+                                
                                 pat.setName(name);
                                 pat.setLastname(lastname);
                                 pat.setTelephone(telephone);
+                                pat.setAddress(address);
+                                pat.setDateOfBirth(date);
+                                pat.setGender(gender);
                                 
 			
 		}
+                        
+                rs.close();
+                prep.close();
+                
 	}catch(Exception e) {
 		e.printStackTrace();
 	}
 		return pat;
 		
 	}
+        
+    @Override
+        public List<Report> viewReportHistory(String dni) {
+            
+           List<Report> repList = new ArrayList<Report>(); ////creation of the list is going to return
+            
+            try {
+			String sql = "SELECT patient_id FROM Patients WHERE DNI = ?";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, "%"+dni+"%");
+                        ResultSet rs = prep.executeQuery();
+                        int id = rs.getInt("patient_id");
+                        
+                        String sql1= "SELECT REPORT FROM Reports WHERE patient_id =? ";
+                        PreparedStatement prep1 = c.prepareStatement(sql1);
+			prep1.setString(1, "%"+id+"%");
+			ResultSet rs2 = prep.executeQuery();
+                        while (rs2.next()) {
+                            java.sql.Date datesql= (java.sql.Date) rs2.getDate("report_date");
+                            java.util.Date  dat = new java.util.Date(datesql.getTime());
+                            String quality=rs2.getString("quality");
+                            String exhaust=rs2.getString("exhaustion");
+                            String averageHours=rs2.getString("hours");
+                            String movem=rs2.getString("movement");
+                            String timeToFall=rs2.getString("time");
+                            String res=rs2.getString("rest");
+                            String awake=rs2.getString("awake");
+                            String timAwake=rs2.getString("times awake");
+                            String dreams=rs2.getString("dreams");
+                            String worr=rs2.getString("worries");
+                            String mood=rs2.getString("mood");
+                            String doubts=rs2.getString("doubts");
+                            Report rep=new Report(dat,quality,exhaust,averageHours,movem,timeToFall,res,awake,timAwake,dreams,worr,mood,doubts);
+                            repList.add(rep);
+                          
+                        }
+                        
+                      rs2.close();
+                      prep1.close();
+                      rs.close();
+                      prep.close();  
+				
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+            return repList;
+	}
 
+       
+       // METODOS ABSTRACTOS, AUN NO ESTAN HECHOS PERO LOS HE IMPLEMENTADO
+        
+    @Override
+    public EEG viewEEG(String dni, Date date) {
+         EEG eeg = new EEG();
+            
+            try {
+			String sql = "SELECT patient_id FROM Patients WHERE DNI = ?";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, "%"+dni+"%");
+                        ResultSet rs = prep.executeQuery();
+                        int id = rs.getInt("patient_id");
+                        
+                        String sql1= "SELECT EEG FROM EEGs WHERE patient_id =? AND EEG_DATE= ?";
+                        PreparedStatement prep1 = c.prepareStatement(sql1);
+			prep1.setString(1, "%"+id+"%");
+                        prep1.setString(2, "%"+date+"%");  //NO SE SI ESTO ESTA BIEN PORQUE DEBERIA SER SetDate PEOR DA ERROR
+                        
+			ResultSet rs2 = prep1.executeQuery();
+                        while (rs2.next()) {
+                            java.sql.Date datesql= (java.sql.Date) rs2.getDate("EEG_date");
+                            java.util.Date eeg_date = new java.util.Date(datesql.getTime());
+                            String EEG=rs2.getString("EEG");
+                           // eeg =new EEG(eeg_date, EEG); //No se como ya que no hay constructor en la clase EEG
+                      }
+                        
+                      rs2.close();
+                      prep1.close();
+                      rs.close();
+                      prep.close();  
+				
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+            return eeg;
+    }
+
+    @Override
+    public EEG viewEEGHistory(String dni) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
+     
    
 	
 	
